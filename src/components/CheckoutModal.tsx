@@ -135,7 +135,7 @@ export function CheckoutModal({
   const getSaaSName = () => {
     if (pricingPlan) return `Suite Plan: ${pricingPlan.name}`;
     if (product) return `SaaS Tool: ${product.name}`;
-    return "CloudLaunch App Bundle";
+    return "ManageGoal App Bundle";
   };
 
   return (

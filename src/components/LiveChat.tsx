@@ -120,7 +120,7 @@ export function LiveChat() {
   });
 
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Hello! I am your CloudLaunch Assistant. How can I help you pick the right SaaS tool today? Ask me about 'LAUNCH20' or refund terms!", time: "12:00 PM" }
+    { sender: "bot", text: "Hello! I am your ManageGoal Assistant. How can I help you pick the right SaaS tool today? Ask me about 'LAUNCH20' or refund terms!", time: "12:00 PM" }
   ]);
   const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -203,7 +203,7 @@ export function LiveChat() {
               </div>
               <div>
                 <h5 className="font-bold text-sm">
-                  {showSettings ? "Chat settings" : "CloudLaunch Support"}
+                  {showSettings ? "Chat settings" : "ManageGoal Support"}
                 </h5>
                 <span className="text-[10px] text-emerald-300 block">
                   {showSettings ? "Configure Live Integrations" : "● Active Live Assistance"}

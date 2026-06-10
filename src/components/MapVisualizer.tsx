@@ -26,7 +26,7 @@ export function MapVisualizer() {
       <div className="flex justify-between items-center">
         <div>
           <span className="text-xs text-brand-400 font-semibold uppercase tracking-wider block">Server Node Topology</span>
-          <h4 className="text-lg font-bold text-white font-display">CloudLaunch Physical Presence</h4>
+          <h4 className="text-lg font-bold text-white font-display">ManageGoal Physical Presence</h4>
         </div>
         <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-2 py-1 rounded-full text-xs font-mono text-emerald-400">
           <Wifi size={12} /> System Status: Online

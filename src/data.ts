@@ -233,16 +233,16 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  { id: "t1", name: "Sarah Jenkins", company: "PathLight Marketing", position: "Creative Founder", rating: 5, review: "Swapping our client operations over to CloudLaunch's unified catalog changed our entire week. MailBoost AI paired with LeadFlow CRM works smoothly to drive real sales.", avatarSeed: "Sarah" },
+  { id: "t1", name: "Sarah Jenkins", company: "PathLight Marketing", position: "Creative Founder", rating: 5, review: "Swapping our client operations over to ManageGoal's unified catalog changed our entire week. MailBoost AI paired with LeadFlow CRM works smoothly to drive real sales.", avatarSeed: "Sarah" },
   { id: "t2", name: "David Vance", company: "Apex Digital SaaS", position: "Lead Architect", rating: 5, review: "AnalyticsHub and TaskSync have simplified remote product deliveries. They are extremely fast, well-crafted, and deliver reliable value daily.", avatarSeed: "David" },
   { id: "t3", name: "Elena Rostova", company: "Bloom Creative Agency", position: "Design Partner", rating: 5, review: "InvoicePro made invoice collection stress-free. Clients checkout securely using our brand logo in seconds. Highly recommend!", avatarSeed: "Elena" },
-  { id: "t4", name: "Marcus Thorne", company: "Aerotech Labs", position: "Operations VP", rating: 5, review: "The customer service response times and outstanding tool reliability make CloudLaunch our dependable SaaS provider. 10/10 tool design.", avatarSeed: "Marcus" },
+  { id: "t4", name: "Marcus Thorne", company: "Aerotech Labs", position: "Operations VP", rating: 5, review: "The customer service response times and outstanding tool reliability make ManageGoal our dependable SaaS provider. 10/10 tool design.", avatarSeed: "Marcus" },
   { id: "t5", name: "Claire Chen", company: "Nexus Education", position: "Software CTO", rating: 5, review: "We connected LeadFlow with our local databases in minutes. Incredible APIs and clear documentation structure.", avatarSeed: "Claire" },
   { id: "t6", name: "Michael Frost", company: "Polaris Capital", position: "CFO Advisor", rating: 5, review: "AnalyticsHub is exactly what we needed to organize our portfolio companies' metrics on one single panel.", avatarSeed: "Michael" },
   { id: "t7", name: "Aria Montgomery", company: "Solace Wellness", position: "Founder", rating: 5, review: "SocialPilot AI keeps my target channels active even during off-hours, saving me hours of copying and pasting.", avatarSeed: "Aria" },
   { id: "t8", name: "Xavier Dupont", company: "Vanguard Studios", position: "General Manager", rating: 5, review: "We are paid on average three times quicker using InvoicePro. The PDF delivery and automated reminder rules are absolute life-savers.", avatarSeed: "Xavier" },
   { id: "t9", name: "Tariq Al-Fayed", company: "Desert Commerce", position: "E-Commerce Founder", rating: 5, review: "MailBoost AI's subject writing generator boosted my store's newsletter discount click rate to over 38%. Outstanding ROI.", avatarSeed: "Tariq" },
-  { id: "ta10", name: "Sophia Martinez", company: "Zeta Consulting", position: "Senior Analyst", rating: 5, review: "Clean UI dashboard systems and zero performance bloat. CloudLaunch builds tools for builders.", avatarSeed: "Sophia" },
+  { id: "ta10", name: "Sophia Martinez", company: "Zeta Consulting", position: "Senior Analyst", rating: 5, review: "Clean UI dashboard systems and zero performance bloat. ManageGoal builds tools for builders.", avatarSeed: "Sophia" },
   { id: "ta11", name: "James Peterson", company: "Gridworks LLC", position: "Project Manager", rating: 5, review: "TaskSync is delightfully quick. Dragging story points across boards has zero latency, supporting team standups flawlessly.", avatarSeed: "James" },
   { id: "ta12", name: "Naomi Kiyotaka", company: "Yugen Media Agency", position: "Comms Director", rating: 5, review: "The multi-platform publishing pipelines inside SocialPilot AI are pristine. My creative copy reaches audiences everywhere with zero fuss.", avatarSeed: "Naomi" }
 ];
@@ -259,12 +259,12 @@ export const FAQS: FAQItem[] = [
   { category: "cancellation", question: "What happens to my data if I cancel?", answer: "Your recorded data is securely stored for 90 days after cancellation, allowing safe reactivation. You can also request complete data deletions instantly." },
   { category: "cancellation", question: "Can I switch plans mid-cycle?", answer: "Yes. When upgrading or downgrading, our billing engine automatically calculates a pro-rated credit for the remainder of your billing cycle." },
 
-  { category: "security", question: "Is my personal data safe with CloudLaunch?", answer: "We enforce absolute database isolation, TLS 1.3 encryption for all data in motion, and AES-256 wrapping for values at rest. Safety is our primary focus." },
+  { category: "security", question: "Is my personal data safe with ManageGoal?", answer: "We enforce absolute database isolation, TLS 1.3 encryption for all data in motion, and AES-256 wrapping for values at rest. Safety is our primary focus." },
   { category: "security", question: "Are you GDPR and CCPA compliant?", answer: "Absolutely. All hosting arrays reside in modern, ISO-27001 audited centers, and we support complete export/deletion tools for compliance." },
   { category: "security", question: "Where is my confidential client records hosted?", answer: "All SaaS infrastructure resides on premium Google Cloud Platform servers, secured with dual-layer firewalls." },
   { category: "security", question: "Do you support Single Sign-On (SSO)?", answer: "Yes, our enterprise tiers support SAML, Okta, and Google Workspace SSO authentication integrations." },
 
-  { category: "product", question: "Do we get access to all updates?", answer: "Yes. CloudLaunch handles all updates server-side silently. You always experience the newest version without manually reloading." },
+  { category: "product", question: "Do we get access to all updates?", answer: "Yes. ManageGoal handles all updates server-side silently. You always experience the newest version without manually reloading." },
   { category: "product", question: "Is there an offline fallback mode?", answer: "TaskSync and LeadFlow CRM support local database caching, letting you log activities while offline which merge securely when you reconnect." },
   { category: "product", question: "Can I connect custom domains to my reports?", answer: "Yes, our white-label feature on AnalyticsHub, InvoicePro, and MailBoost allows custom branded URLs with automated SSL generation." },
   { category: "product", question: "Is there a limit on API integrations?", answer: "We offer generous starter endpoints. Pro tiers have custom, high-frequency webhooks and robust payload pipelines." },
@@ -398,10 +398,10 @@ export const PRICING_PLANS: PricingPlan[] = [
 ];
 
 export const REFUND_POLICY_TEMPLATE = `
-# CloudLaunch Apps — Refund & Cancellation Policy
+# ManageGoal — Refund & Cancellation Policy
 **Last Updated: June 10, 2026**
 
-At **CloudLaunch Apps**, we strive to design and deliver high-performance, SaaS products that help grow your business. We understand that software needs can adapt, and we want to ensure you are fully confident in your investment.
+At **ManageGoal**, we strive to design and deliver high-performance, SaaS products that help grow your business. We understand that software needs can adapt, and we want to ensure you are fully confident in your investment.
 
 ---
 
@@ -431,15 +431,15 @@ Once approved, refunds are credited back to your original payment method (e.g., 
 ---
 
 **Have any questions?** Reach out to us at:
-- **Email**: payments@cloudlaunch.example.com
-- **Help Center**: support.cloudlaunch.example.com
+- **Email**: payments@managegoal.example.com
+- **Help Center**: support.managegoal.example.com
 `;
 
 export const PRIVACY_POLICY_TEMPLATE = `
-# CloudLaunch Apps — Privacy & Security Policy
+# ManageGoal — Privacy & Security Policy
 **Last Updated: June 10, 2026**
 
-Your security and trust are paramount to **CloudLaunch Apps**. This Privacy Policy explains how we collect, store, share, and protect your information when you access our platforms, software products, and connected customer services.
+Your security and trust are paramount to **ManageGoal**. This Privacy Policy explains how we collect, store, share, and protect your information when you access our platforms, software products, and connected customer services.
 
 ---
 
@@ -468,15 +468,15 @@ We employ rigorous physical & digital safeguards, including TLS 1.3 transfer pro
 ---
 
 **Exercise Your Privacy Rights**:
-- **Email**: privacy@cloudlaunch.example.com
-- **Security Team**: compliance@cloudlaunch.example.com
+- **Email**: privacy@managegoal.example.com
+- **Security Team**: compliance@managegoal.example.com
 `;
 
 export const TERMS_CONDITIONS_TEMPLATE = `
-# CloudLaunch Apps — Terms & Conditions of Service
+# ManageGoal — Terms & Conditions of Service
 **Last Updated: June 10, 2026**
 
-Please review these Terms & Conditions carefully. By accessing or subscribing to **CloudLaunch Apps** platforms, you agree to be bound by these provisions, creating a legally binding agreement between you and CloudLaunch.
+Please review these Terms & Conditions carefully. By accessing or subscribing to **ManageGoal** platforms, you agree to be bound by these provisions, creating a legally binding agreement between you and ManageGoal.
 
 ---
 
@@ -491,23 +491,23 @@ Please review these Terms & Conditions carefully. By accessing or subscribing to
 - **Price Revisions**: We reserve the right to revise our rates. Any pricing adjustments will be communicated to you at least 30 days in advance.
 
 ### 3. Intellectual Property Rights
-- All brand designs, software interfaces, vector code, animations, copy, and icons are the exclusive property of CloudLaunch.
+- All brand designs, software interfaces, vector code, animations, copy, and icons are the exclusive property of ManageGoal.
 - Users retain absolute ownership of all raw documents, lead fields, databases, and assets uploaded to our CRM or analytics platforms.
 
 ### 4. Limitation of Liability
-CloudLaunch is provided "as-is" without warranties of any kind. Under no circumstances shall CloudLaunch or its affiliates be liable for indirect, incidental, or consequential damages (including loss of profits) arising from service downtime or coordinate failures.
+ManageGoal is provided "as-is" without warranties of any kind. Under no circumstances shall ManageGoal or its affiliates be liable for indirect, incidental, or consequential damages (including loss of profits) arising from service downtime or coordinate failures.
 
 ---
 
 **Contact Legal Counsel**:
-- **Email**: legal@cloudlaunch.example.com
+- **Email**: legal@managegoal.example.com
 `;
 
 export const COOKIE_POLICY_TEMPLATE = `
-# CloudLaunch Apps — Cookie & Analytics Policy
+# ManageGoal — Cookie & Analytics Policy
 **Last Updated: June 10, 2026**
 
-This Cookie Policy explains how **CloudLaunch Apps** structures browser cookies to ensure instant page load speeds and intuitive dashboard settings.
+This Cookie Policy explains how **ManageGoal** structures browser cookies to ensure instant page load speeds and intuitive dashboard settings.
 
 ---
 
@@ -525,14 +525,14 @@ You can configure your browser to block or warn about all cookie placements. How
 ---
 
 **Reach Out: Support Division**
-- **Email**: cookies@cloudlaunch.example.com
+- **Email**: cookies@managegoal.example.com
 `;
 
 export const DISCLAIMER_TEMPLATE = `
-# CloudLaunch Apps — Professional Service Disclaimer
+# ManageGoal — Professional Service Disclaimer
 **Last Updated: June 10, 2026**
 
-All information and software utilities hosted on **CloudLaunch Apps** are provided strictly for educational and commercial productivity enrichment.
+All information and software utilities hosted on **ManageGoal** are provided strictly for educational and commercial productivity enrichment.
 
 ---
 
@@ -547,5 +547,5 @@ While our tools (LeadFlow, MailBoost, AnalyticsHub) are optimized to increase te
 ---
 
 **Any further inquiries?**
-- **Email**: hello@cloudlaunch.example.com
+- **Email**: hello@managegoal.example.com
 `;

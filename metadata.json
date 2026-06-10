@@ -1,6 +1,8 @@
 {
-  "name": "CloudLaunch Apps",
-  "description": "Powerful SaaS Solutions for Businesses, Creators & Entrepreneurs. High-performance software tools designed to help automate, grow, and optimize your organization.",
+  "name": "ManageGoal",
+  "description": "ManageGoal is a premium workspace SaaS catalog featuring high-performance tools (LeadFlow CRM, MailBoost AI, TaskSync, InvoicePro, SocialPilot, AnalyticsHub) optimized for productivity, metrics alignment, and goal management.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

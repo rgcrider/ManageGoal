@@ -173,10 +173,10 @@ Why developers love our platform:
 - Dynamic metrics hooks
 - 99.9% uptime guarantees
 
-Use this link to secure your 25% discount instantly: https://cloudlaunch.example.com/checkout?code=BUILDER2026
+Use this link to secure your 25% discount instantly: https://managegoal.example.com/checkout?code=BUILDER2026
 
 Best,
-The CloudLaunch Support Bot`;
+The ManageGoal Support Bot`;
 
     let i = 0;
     const interval = setInterval(() => {
@@ -387,7 +387,7 @@ export function InvoiceProDemo() {
         <div>
           <div className="flex justify-between items-start border-b border-slate-100 pb-3">
             <div>
-              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-500">CloudLaunch Solutions</h5>
+              <h5 className="font-bold text-xs uppercase tracking-wider text-slate-500">ManageGoal Solutions</h5>
               <p className="text-[10px] text-slate-400 font-mono">INV-2026-90412</p>
             </div>
             <span className={`text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded ${
@@ -448,7 +448,7 @@ export function InvoiceProDemo() {
 export function SocialPilotDemo() {
   interface ScheduledPost { id: string; channel: "twitter" | "linkedin" | "instagram"; copy: string; scheduleTime: string }
   const [channel, setChannel] = useState<"twitter" | "linkedin" | "instagram">("twitter");
-  const [copy, setCopy] = useState("We switched our internal pipeline databases over to CloudLaunch Apps and saved 40+ hours this week! Absolute game-changer. 🚀 #SaaS #growth");
+  const [copy, setCopy] = useState("We switched our internal pipeline databases over to ManageGoal Apps and saved 40+ hours this week! Absolute game-changer. 🚀 #SaaS #growth");
   const [queue, setQueue] = useState<ScheduledPost[]>([
     { id: "1", channel: "linkedin", copy: "Highly advice all startup CTOs to adopt lightweight Kanban boards for cross-team alignments.", scheduleTime: "Tomorrow, 09:00 AM" },
     { id: "2", channel: "instagram", copy: "Vanguard Team is relaxing after deploying 6 new SaaS releases under budget bounds!", scheduleTime: "Friday, 02:00 PM" }

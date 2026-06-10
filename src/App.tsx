@@ -43,6 +43,7 @@ import {
 import { MapVisualizer } from "./components/MapVisualizer";
 import { CheckoutModal } from "./components/CheckoutModal";
 import { LiveChat } from "./components/LiveChat";
+import { AnimatedHeroMockup } from "./components/AnimatedHeroMockup";
 
 export default function App() {
   // --- Routing & Navigation States ---
@@ -306,7 +307,7 @@ export default function App() {
             </div>
             <div className="text-left">
               <span className="font-display font-extrabold text-lg text-white letter tracking-tight block">
-                CloudLaunch <span className="text-brand-400">Apps</span>
+                ManageGoal <span className="text-brand-400">Apps</span>
               </span>
               <span className="text-[9px] uppercase tracking-wider font-mono text-gray-400 block -mt-1 font-semibold">SAAS SUITE CATALOG</span>
             </div>
@@ -533,6 +534,9 @@ export default function App() {
                 </button>
               </div>
 
+              {/* Animated SaaS Operations Mockup */}
+              <AnimatedHeroMockup />
+
               {/* Trust Badge Grid */}
               <div className="pt-12 space-y-4">
                 <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 font-mono">
@@ -552,7 +556,7 @@ export default function App() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center space-y-2 mb-10 text-pretty">
                 <span className="text-xs text-brand-400 font-mono uppercase tracking-widest block font-bold">Uncompromising Standard</span>
-                <h2 className="text-2xl sm:text-4xl font-bold font-display text-white">Why Teams Trust CloudLaunch</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold font-display text-white">Why Teams Trust ManageGoal</h2>
                 <p className="text-gray-400 max-w-xl mx-auto text-sm">Every application is precision engineered prioritizing performance, accessibility compliance, GDPR safeguards, and instant deployment speeds.</p>
               </div>
 
@@ -709,7 +713,7 @@ export default function App() {
                 <div className="absolute bottom-0 right-12 w-28 h-28 bg-indigo-600/10 rounded-full blur-3xl"></div>
 
                 <span className="text-xs text-brand-405 font-mono uppercase tracking-wider block font-bold">STAY INFORMED</span>
-                <h3 className="text-xl sm:text-3xl font-bold font-display text-white">Join the CloudLaunch Dispatch</h3>
+                <h3 className="text-xl sm:text-3xl font-bold font-display text-white">Join the ManageGoal Dispatch</h3>
                 <p className="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto">
                   Receive the latest SaaS development news plus exclusive, priority discount codes. No spam, self-cancel anytime.
                 </p>
@@ -981,7 +985,7 @@ export default function App() {
                       <thead>
                         <tr className="bg-slate-950 text-gray-400 text-[10px] uppercase tracking-wider border-b border-slate-800">
                           <th className="p-3">SaaS Parameters</th>
-                          <th className="p-3 text-brand-400">CloudLaunch {product.name}</th>
+                          <th className="p-3 text-brand-400">ManageGoal {product.name}</th>
                           <th className="p-3 text-gray-500">Traditional Legacy Providers</th>
                         </tr>
                       </thead>
@@ -1278,7 +1282,7 @@ export default function App() {
 
             <section className="space-y-4 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans text-pretty">
               <p>
-                Founded in 2026, <strong>CloudLaunch Apps</strong> is dedicated to crafting premium, developer-first software solutions that automate tedious, manual workflow operations.
+                Founded in 2026, <strong>ManageGoal Apps</strong> is dedicated to crafting premium, developer-first software solutions that automate tedious, manual workflow operations.
               </p>
               <p>
                 Our vision centers on consolidating commercial tool chains. Too often, teams waste high capacity margins copying lead fields across spreadsheets, struggling with slow accounting structures, or managing unaligned social tools. We build optimized, secure, standalone modules that communicate securely and let developers and business planners scale operations fast.
@@ -1751,13 +1755,13 @@ Sitemap: https://cloudlaunch.example.com/sitemap.xml`}
               <div className="h-7 w-7 rounded-lg bg-brand-600 flex items-center justify-center text-white">
                 <Sparkles size={14} />
               </div>
-              <span className="font-display font-black text-white text-sm">CloudLaunch Apps</span>
+              <span className="font-display font-black text-white text-sm">ManageGoal Apps</span>
             </div>
             <p className="max-w-xs text-gray-400 text-pretty leading-relaxed">
               Powerful SaaS Solutions designed to organize CRM deals, AI campaigns, and ledger invoices securely.
             </p>
             <p className="text-[10px] text-gray-500 font-mono">
-              © 2026 CloudLaunch Apps. All Rights Reserved. Fully Encrypted System.
+              © 2026 ManageGoal Apps. All Rights Reserved. Fully Encrypted System.
             </p>
           </div>
 
