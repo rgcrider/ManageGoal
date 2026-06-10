@@ -278,6 +278,99 @@ export default function App() {
     navigateTo("thank-you");
   };
 
+  const handleDownloadReceipt = () => {
+    const orderId = lastOrder?.orderId || "ORD-941208";
+    const productName = lastOrder?.cart.product.name || "Growth Suite Plus Bundle";
+    const cycle = lastOrder?.cart.billingCycle || "yearly";
+    const price = lastOrder?.cart.price || 69;
+    const dateStr = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ManageGoal Receipt - \${orderId}</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 40px; color: #1e293b; background: #fafafa; }
+    .receipt-card { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
+    .header { text-align: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 24px; margin-bottom: 24px; }
+    .brand { font-size: 22px; font-weight: 800; color: #ca8a04; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .subtitle { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; }
+    .order-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 12px; color: #64748b; margin-bottom: 30px; }
+    .meta-value { font-weight: 600; color: #0f172a; margin-top: 2px; }
+    .table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    .table th { text-align: left; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 11px; text-transform: uppercase; color: #64748b; tracking-wider: 0.05em; }
+    .table td { padding: 16px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #334155; }
+    .total-row { font-size: 16px; font-weight: bold; color: #0f172a; }
+    .total-price { color: #16a34a; font-family: monospace; font-size: 18px; }
+    .footer { text-align: center; font-size: 11px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 24px; margin-top: 20px; }
+    .badge { display: inline-block; background: #fef9c3; color: #a16207; padding: 4px 8px; border-radius: 9999px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="receipt-card">
+    <div class="header">
+      <div class="brand">MANAGEGOAL</div>
+      <div class="subtitle">Official Payment Receipt</div>
+    </div>
+    
+    <div class="order-meta">
+      <div>
+        Order Identifier
+        <div class="meta-value">\${orderId}</div>
+      </div>
+      <div style="text-align: right;">
+        Date of Purchase
+        <div class="meta-value">\${dateStr}</div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Acquired Standard Suite</th>
+          <th style="text-align: right;">Amount Charged</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>\${productName}</strong>
+            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Dynamic Single SaaS Node Licensing (\${cycle} cycle)</div>
+          </td>
+          <td style="text-align: right; font-weight: 600;">\$\${price}.00</td>
+        </tr>
+        <tr class="total-row">
+          <td style="padding-top: 24px;">Total Authorized</td>
+          <td style="text-align: right; padding-top: 24px;" class="total-price">\$\${price}.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+      <span class="badge">Paid Securely & Verified</span>
+    </div>
+
+    <div class="footer">
+      Thank you for choosing ManageGoal. Your active license key has been auto-mapped.
+      <br>
+      <span style="font-family: monospace; font-size: 9px; display: inline-block; margin-top: 8px;">DIGITAL SHA256 CORRELATION: AUTH-MNG-\${orderId}-SECURE</span>
+    </div>
+  </div>
+</body>
+</html>`;
+
+    const blob = new Blob([htmlContent], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `receipt-\${orderId}.html`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   // Filter products based on search constraints
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter(p => {
@@ -1612,48 +1705,91 @@ export default function App() {
             VIEW: THANK YOU PAGE (PURCHASE SUCCESS CONFIRMATION)
             ======================================================== */}
         {currentView === "thank-you" && (
-          <div className="max-w-2xl mx-auto px-4 py-16 text-center space-y-6">
+          <div className="max-w-2xl mx-auto px-4 py-16 text-center space-y-8">
             <div className="h-16 w-16 bg-gradient-to-tr from-emerald-500 to-teal-400 text-white rounded-2xl flex items-center justify-center mx-auto shadow-xl shadow-emerald-500/20 animate-bounce">
               <CheckCircle2 size={36} />
             </div>
 
-            <span className="text-xs text-brand-444 uppercase tracking-widest font-bold block font-mono">STEP ONE SETUP DONE</span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white font-display">Thank you for your purchase!</h1>
-            <p className="text-gray-450 text-xs sm:text-sm max-w-md mx-auto">
-              Your software has been initialized and assigned to your client profile. See setup code credentials and receipts below.
-            </p>
+            <div className="space-y-3">
+              <span className="text-xs text-brand-402 uppercase tracking-widest font-bold block font-mono">SECURE DISPATCH CONFIRMED</span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-white font-display">Thank you for your purchase!</h1>
+              <p className="text-gray-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+                Your high-performance workspace node has been initialized and registered. Track setup guidelines and download credentials below.
+              </p>
+            </div>
+
+            {/* Sandbox Inspectability & Testing Panel */}
+            <div className="bg-brand-900/10 border border-brand-500/20 rounded-2xl p-4 text-xs text-left max-w-lg mx-auto space-y-3">
+              <div className="flex items-center gap-2 text-brand-300 font-bold font-display">
+                <Sparkles size={14} />
+                <span>Direct Product Tester Panel</span>
+              </div>
+              <p className="text-gray-400 leading-normal">
+                Normally, users land here automatically after selecting any product and completing a mock checkout. Use this panel to instantly configure the Thank You screen for any product in our directory:
+              </p>
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className="text-[10px] text-gray-500 font-mono uppercase">SWITCH PREVIEW:</span>
+                <select
+                  className="bg-slate-900/90 border border-slate-800 text-white text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 cursor-pointer"
+                  value={lastOrder?.cart.product.id || ""}
+                  onChange={(e) => {
+                    const selId = e.target.value;
+                    const prod = PRODUCTS.find(p => p.id === selId);
+                    if (prod) {
+                      setLastOrder({
+                        cart: {
+                          product: prod,
+                          billingCycle: "yearly",
+                          price: Math.floor(prod.priceMonthly * 12 * 0.8) // Yearly price with standard discount
+                        },
+                        orderId: "ORD-" + Math.floor(Math.random() * 900000 + 100000),
+                        discountApplied: true
+                      });
+                    }
+                  }}
+                >
+                  <option value="" disabled>-- Inspect product thank-you state --</option>
+                  {PRODUCTS.map(p => (
+                    <option key={p.id} value={p.id}>{p.name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
             {/* Dynamic visual receipt and download simulation block */}
-            <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-left text-xs space-y-4">
+            <div className="bg-slate-900/80 border border-slate-850 p-6 rounded-2xl text-left text-xs space-y-4 shadow-xl">
               <div className="flex justify-between items-center text-[10px] text-gray-400 font-mono tracking-wider border-b border-slate-850 pb-2">
-                <span>ORDER ID: {lastOrder?.orderId || "ORD-941208"}</span>
-                <span>STATUS: SECURE ENABLED</span>
+                <span>ORDER GENERATED: {lastOrder?.orderId || "ORD-941208"}</span>
+                <span className="text-emerald-400 font-bold">STATUS: AUTHORIZED</span>
               </div>
 
               <div className="space-y-1">
-                <h4 className="text-white font-bold font-display text-sm">{lastOrder?.cart.product.name || "Growth Suite Plus Bundle"}</h4>
-                <p className="text-gray-400">Cycle: <strong className="capitalize text-white">{lastOrder?.cart.billingCycle || "yearly"} subscription</strong></p>
-                <p className="text-gray-400 font-mono">Charge Total: <strong className="text-emerald-400">${lastOrder?.cart.price || 69}</strong></p>
+                <h4 className="text-white font-bold font-display text-sm flex items-center gap-2">
+                  <span className="text-brand-400">{getProductIcon(lastOrder?.cart.product.logoName || "Layers")}</span>
+                  {lastOrder?.cart.product.name || "Growth Suite Plus Bundle"}
+                </h4>
+                <p className="text-gray-400">Subscription Term: <strong className="capitalize text-white">{lastOrder?.cart.billingCycle || "yearly"} layout renewal</strong></p>
+                <p className="text-gray-400 font-mono">Charge Captured: <strong className="text-emerald-400">${lastOrder?.cart.price || 69}.00 USD</strong></p>
               </div>
 
               <div className="bg-slate-950 p-4 rounded-xl border border-slate-850 space-y-2">
-                <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-mono font-bold block">🚨 Step-by-Step Deployment Guide:</span>
-                <p className="text-gray-400 leading-snug">To activate your SaaS app, visit your developers dashboard panel or run our terminal connection command on your servers:</p>
+                <span className="text-[10px] text-brand-300 uppercase tracking-widest font-mono font-bold block">🚨 Instant Integration Terminal Guide:</span>
+                <p className="text-gray-450 leading-snug text-[11px]">To spin up and mount this specific module node inside your cloud application, run the installation block:</p>
                 <code className="bg-slate-900 block p-2 rounded text-[10px] font-mono text-white select-all border border-slate-800">
-                  npx @cloudlaunch/sdk init --key=key_cl_904128_prod
+                  npx @managegoal/sdk init --key=mg_key_{lastOrder?.cart.product.id || "suite"}_authorized
                 </code>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-2 text-[11px] font-semibold text-gray-200">
                 <button
-                  onClick={() => alert("Mock downloading complete developer templates/manual files (PDF)...")}
-                  className="flex-grow bg-slate-950 hover:bg-slate-900 border border-slate-800 py-1.5 px-3 rounded-lg flex items-center justify-center gap-1 text-xs"
+                  onClick={handleDownloadReceipt}
+                  className="flex-grow bg-slate-950 hover:bg-slate-900 border border-slate-800 py-1.5 px-3 rounded-lg flex items-center justify-center gap-1 text-xs cursor-pointer transition duration-200"
                 >
-                  <Download size={12} /> Download PDF Receipt
+                  <Download size={12} /> Download Payment Receipt
                 </button>
                 <button
                   onClick={() => navigateTo("contact")}
-                  className="flex-grow bg-slate-955 border border-slate-850 py-1.5 px-3 rounded-lg flex items-center justify-center gap-1 text-xs text-brand-400"
+                  className="flex-grow bg-slate-955 border border-slate-850 py-1.5 px-3 rounded-lg flex items-center justify-center gap-1 text-xs text-brand-400 cursor-pointer transition duration-200 hover:text-brand-300"
                 >
                   Request Technical SLA Support
                 </button>
@@ -1663,7 +1799,7 @@ export default function App() {
             <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => navigateTo("home")}
-                className="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-8 rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
+                className="bg-brand-500 hover:bg-brand-600 text-white font-bold py-2.5 px-8 rounded-xl text-xs flex items-center justify-center gap-1.5 transition duration-200 cursor-pointer shadow-lg shadow-brand-500/10"
               >
                 Back to Cockpit Page <ArrowRight size={14} />
               </button>
