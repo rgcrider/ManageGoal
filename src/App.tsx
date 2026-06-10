@@ -5,7 +5,7 @@ import {
   Sparkles, ShieldAlert, FileText, ChevronRight, Menu, X,
   Phone, MapPin, Send, HelpCircle, BookOpen, Clock, Download,
   ExternalLink, ShoppingCart, RefreshCw, AlertTriangle, Filter,
-  Building, CheckCircle2, ChevronDown
+  Building, CheckCircle2, ChevronDown, Play
 } from "lucide-react";
 
 import {
@@ -44,6 +44,7 @@ import { MapVisualizer } from "./components/MapVisualizer";
 import { CheckoutModal } from "./components/CheckoutModal";
 import { LiveChat } from "./components/LiveChat";
 import { AnimatedHeroMockup } from "./components/AnimatedHeroMockup";
+import { ClientConsole } from "./components/ClientConsole";
 
 export default function App() {
   // --- Routing & Navigation States ---
@@ -65,6 +66,20 @@ export default function App() {
   const [checkoutProduct, setCheckoutProduct] = useState<Product | null>(null);
   const [checkoutPlan, setCheckoutPlan] = useState<PricingPlan | null>(null);
   const [lastOrder, setLastOrder] = useState<{ cart: CartItem; orderId: string; discountApplied: boolean } | null>(null);
+  const [purchasedProductIds, setPurchasedProductIds] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem("mgoal_unlocked_products");
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    // Default unlock LeadFlow CRM so they can play with it immediately
+    return ["leadflow-crm"];
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("mgoal_unlocked_products", JSON.stringify(purchasedProductIds));
+    } catch (f) {}
+  }, [purchasedProductIds]);
 
   // --- Contact Support States ---
   const [supportTicket, setSupportTicket] = useState<SupportTicket>({
@@ -180,7 +195,7 @@ export default function App() {
         setCurrentView("blog-post");
       } else {
         const view = hash.replace("#", "");
-        const validViews = ["home", "products", "pricing", "about", "contact", "faq", "blog", "thank-you", "privacy-policy", "terms-conditions", "refund-policy", "cookie-policy", "disclaimer", "sitemap-view", "robots-txt-view"];
+        const validViews = ["home", "products", "pricing", "about", "contact", "faq", "blog", "thank-you", "client-console", "privacy-policy", "terms-conditions", "refund-policy", "cookie-policy", "disclaimer", "sitemap-view", "robots-txt-view"];
         if (validViews.includes(view)) {
           setCurrentView(view === "privacy-policy" ? "privacy" : view === "terms-conditions" ? "terms" : view === "refund-policy" ? "refund" : view === "cookie-policy" ? "cookie" : view);
         } else {
@@ -250,6 +265,17 @@ export default function App() {
   const completeCheckoutPurchase = (cartItem: CartItem, orderId: string, discount: boolean) => {
     setIsCheckoutOpen(false);
     setLastOrder({ cart: cartItem, orderId, discountApplied: discount });
+    
+    setPurchasedProductIds(prev => {
+      const isSuite = cartItem.product.id === "custom-suite" || 
+                      cartItem.product.id.toLowerCase().includes("suite") || 
+                      cartItem.product.id.toLowerCase().includes("bundle");
+      if (isSuite) {
+        return ["leadflow-crm", "mailboost-ai", "invoicepro", "socialpilot-ai", "tasksync", "analyticshub"];
+      }
+      return prev.includes(cartItem.product.id) ? prev : [...prev, cartItem.product.id];
+    });
+
     navigateTo("thank-you");
   };
 
@@ -320,6 +346,19 @@ export default function App() {
               className={`px-3 py-2 rounded-lg hover:text-white transition duration-200 ${currentView === "home" ? "bg-slate-900 text-brand-405 font-bold" : ""}`}
             >
               Home
+            </button>
+            <button
+              onClick={() => navigateTo("client-console")}
+              className={`px-3 py-2 rounded-lg hover:text-white transition duration-200 flex items-center gap-1 ${
+                currentView === "client-console" 
+                  ? "bg-brand-500/10 text-brand-400 font-bold border border-brand-500/30" 
+                  : "text-brand-400 font-bold hover:bg-slate-900 border border-transparent"
+              }`}
+            >
+              My Console
+              <span className="bg-brand-500 text-white text-[8px] px-1.5 py-0.5 rounded font-mono uppercase tracking-widest leading-none font-bold">
+                🎛️ Live
+              </span>
             </button>
             <button
               onClick={() => navigateTo("products")}
@@ -431,13 +470,22 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-slate-850 bg-slate-900 px-4 py-4 space-y-2 flex flex-col font-medium">
             <button
-              onClick={() => navigateTo("home")}
+              onClick={() => { navigateTo("home"); setMobileMenuOpen(false); }}
               className={`text-left p-2.5 rounded-lg text-sm ${currentView === "home" ? "bg-slate-950 text-brand-402" : "text-gray-300"}`}
             >
               Home Cockpit
             </button>
             <button
-              onClick={() => navigateTo("products")}
+              onClick={() => { navigateTo("client-console"); setMobileMenuOpen(false); }}
+              className={`text-left p-2.5 rounded-lg text-sm flex items-center justify-between font-bold ${
+                currentView === "client-console" ? "bg-slate-950 text-brand-402" : "text-brand-400"
+              }`}
+            >
+              <span>My Console & Downloads 📡</span>
+              <span className="bg-brand-500 text-white text-[8px] py-0.5 px-1.5 rounded font-mono font-bold uppercase tracking-wider">LIVE</span>
+            </button>
+            <button
+              onClick={() => { navigateTo("products"); setMobileMenuOpen(false); }}
               className={`text-left p-2.5 rounded-lg text-sm ${currentView === "products" ? "bg-slate-950 text-brand-402" : "text-gray-300"}`}
             >
               SaaS Solutions Catalog
@@ -1637,15 +1685,38 @@ export default function App() {
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => navigateTo("client-console")}
+                className="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-8 rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
+              >
+                <Play size={13} /> Launch Console & Files <ArrowRight size={14} />
+              </button>
               <button
                 onClick={() => navigateTo("home")}
-                className="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-8 rounded-xl text-xs flex items-center gap-1.5 mx-auto transition"
+                className="bg-slate-900 hover:bg-slate-800 text-gray-300 border border-slate-800 font-bold py-2.5 px-8 rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
               >
-                Back to Cockpit <ArrowRight size={14} />
+                Back to Cockpit Page
               </button>
             </div>
           </div>
+        )}
+
+        {/* ========================================================
+            VIEW: CLIENT CONSOLE (ACTIVE SUITE WORKSPACE)
+            ======================================================== */}
+        {currentView === "client-console" && (
+          <ClientConsole
+            purchasedProductIds={purchasedProductIds}
+            onUnlockProduct={(productId) => {
+              setPurchasedProductIds(prev => prev.includes(productId) ? prev : [...prev, productId]);
+            }}
+            onOpenCheckout={(product) => {
+              setCheckoutProduct(product);
+              setCheckoutPlan(null);
+              setIsCheckoutOpen(true);
+            }}
+          />
         )}
 
         {/* ========================================================
