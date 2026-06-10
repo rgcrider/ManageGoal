@@ -1,0 +1,6 @@
+{
+  "name": "CloudLaunch Apps",
+  "description": "Powerful SaaS Solutions for Businesses, Creators & Entrepreneurs. High-performance software tools designed to help automate, grow, and optimize your organization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
