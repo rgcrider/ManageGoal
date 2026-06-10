@@ -1,47 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", sans-serif;
-  --font-heading: "Sora", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-sora: "Sora", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-sora: "Space Grotesk", sans-serif;
+  --font-inter: "Plus Jakarta Sans", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Custom brand colors matching professional, High Density blue system */
-  --color-brand-50: #f0f7ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-200: #bae6fd;
-  --color-brand-300: #7dd3fc;
-  --color-brand-400: #38bdf8;
-  --color-brand-402: #0ea5e9;
-  --color-brand-405: #3b82f6;
-  --color-brand-444: #1d4ed8;
-  --color-brand-500: #3b82f6;
-  --color-brand-505: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-650: #1d4ed8;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #0f172a;
+  /* Custom brand colors matching professional, Luxurious Gold & Satin Amber metallic system */
+  --color-brand-50: #fefce8;
+  --color-brand-100: #fef9c3;
+  --color-brand-200: #fde047;
+  --color-brand-300: #f59e0b;
+  --color-brand-400: #f59e0b;
+  --color-brand-402: #eab308;
+  --color-brand-405: #d97706;
+  --color-brand-444: #b45309;
+  --color-brand-500: #d4af37;
+  --color-brand-505: #d4af37;
+  --color-brand-600: #ca8a04;
+  --color-brand-650: #a16207;
+  --color-brand-700: #a16207;
+  --color-brand-800: #854d0e;
+  --color-brand-900: #422006;
+  --color-brand-950: #0c0a09;
 
-  --color-dark-50: #f8fafc;
-  --color-dark-900: #090b11;
-  --color-dark-950: #05060a;
+  --color-dark-50: #fafaf9;
+  --color-dark-900: #0c0c0e;
+  --color-dark-950: #050506;
   
-  --color-slate-900: #090b11;
-  --color-slate-950: #05060a;
+  --color-slate-900: #0a0a0c;
+  --color-slate-950: #040405;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    background-color: #080b11;
-    color: #e2e8f0;
+    background-color: #0c0d12;
+    color: #f4f4f5;
   }
 
   body {
@@ -50,7 +50,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   /* Accessibility focus ring styling */
@@ -67,16 +67,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #090a0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1c1d24;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-600);
+  background: var(--color-brand-500);
 }
 
 /* Animations and helpers */
@@ -90,26 +90,26 @@
 }
 
 .glass-panel {
-  background: rgba(9, 11, 17, 0.5);
+  background: rgba(12, 13, 18, 0.5);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05); /* border-white/5 */
+  border: 1px solid rgba(255, 255, 255, 0.04); /* border-white/5 */
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 10%, #60a5fa 55%, #3b82f6 100%);
+  background: linear-gradient(135deg, #ffffff 15%, #fcd34d 60%, #b45309 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .premium-gradient {
-  background-color: #080b11;
+  background-color: #090a0f;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.16) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 40%),
-    radial-gradient(at 50% 100%, rgba(14, 165, 233, 0.06) 0px, transparent 50%),
-    linear-gradient(to right, rgba(99, 102, 241, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 40%),
+    radial-gradient(at 50% 100%, rgba(251, 191, 36, 0.04) 0px, transparent 50%),
+    linear-gradient(to right, rgba(212, 175, 55, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.01) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 64px 64px, 64px 64px;
 }
