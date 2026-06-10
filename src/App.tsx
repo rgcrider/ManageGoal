@@ -652,9 +652,16 @@ export default function App() {
                             </span>
                           </div>
 
-                          <h3 className="text-xl font-bold text-white font-display flex items-center gap-2">
+                          <h3 
+                            onClick={() => {
+                              setSelectedProductId(product.id);
+                              navigateTo("product-sales", `#product/${product.id}`);
+                            }}
+                            className="text-xl font-bold text-white hover:text-brand-400 transition duration-200 cursor-pointer font-display flex items-center gap-2"
+                            title="View Sales Page"
+                          >
                             <span className="text-brand-400">{getProductIcon(product.logoName)}</span>
-                            {product.name}
+                            <span className="hover:underline">{product.name}</span>
                           </h3>
 
                           <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
@@ -671,26 +678,17 @@ export default function App() {
                           ))}
                         </ul>
 
-                        <div className="pt-5 flex gap-2">
-                          <button
-                            onClick={() => {
-                              setSelectedProductId(product.id);
-                              navigateTo("product-sales", `#product/${product.id}`);
-                            }}
-                            className="flex-1 bg-slate-900 border border-slate-800 hover:bg-slate-850 text-white font-bold text-xs py-2 rounded-xl transition duration-200 cursor-pointer text-center"
-                          >
-                            Explore Sales Page
-                          </button>
+                        <div className="pt-5">
                           <button
                             onClick={() => {
                               setCheckoutProduct(product);
                               setCheckoutPlan(null);
                               setIsCheckoutOpen(true);
                             }}
-                            className="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2 px-3.5 rounded-xl transition"
+                            className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
                             title="Instant checkout"
                           >
-                            Buy Now
+                            <ShoppingCart size={13} /> Buy Now
                           </button>
                         </div>
                       </div>
@@ -853,8 +851,17 @@ export default function App() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-white font-display">{product.name}</h3>
-                      <p className="text-xs text-brand-405 font-mono mb-2">{product.highlightedMetric.label}: <strong className="text-white">{product.highlightedMetric.value}</strong></p>
+                      <h3 
+                        onClick={() => {
+                          setSelectedProductId(product.id);
+                          navigateTo("product-sales", `#product/${product.id}`);
+                        }}
+                        className="text-xl font-bold text-white hover:text-brand-400 transition duration-200 cursor-pointer font-display inline-block hover:underline"
+                        title="View Sales Page"
+                      >
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-brand-405 font-mono mt-2 mb-2">{product.highlightedMetric.label}: <strong className="text-white">{product.highlightedMetric.value}</strong></p>
                       <p className="text-gray-400 text-xs font-sans leading-relaxed">{product.description}</p>
                     </div>
 
@@ -870,25 +877,16 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-slate-900/40 border-t border-slate-850 flex gap-2">
-                    <button
-                      onClick={() => {
-                        setSelectedProductId(product.id);
-                        navigateTo("product-sales", `#product/${product.id}`);
-                      }}
-                      className="flex-grow bg-slate-950 border border-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2 rounded-xl transition text-center"
-                    >
-                      View Advanced Sales Page
-                    </button>
+                  <div className="p-6 bg-slate-900/40 border-t border-slate-850">
                     <button
                       onClick={() => {
                         setCheckoutProduct(product);
                         setCheckoutPlan(null);
                         setIsCheckoutOpen(true);
                       }}
-                      className="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2 px-3 rounded-xl transition"
+                      className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
                     >
-                      Buy Now
+                      <ShoppingCart size={13} /> Buy Now
                     </button>
                   </div>
                 </div>
